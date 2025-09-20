@@ -1,4 +1,4 @@
-## "Arogya Mitra: Your AI Health Companion"🩺 
+# Arogya Mitra: Your AI Health Companion"🩺 
 An AI-powered public health chatbot designed to provide accessible, reliable, and multilingual medical information for rural and semi-urban communities.
 
 In many parts of India, getting quick and reliable health information is a real challenge. Slow internet and language barriers can make it difficult for people to get the answers they need. Sehat Saathi was built to solve this problem by running directly on WhatsApp, optimized for low-network conditions, and supporting English, Hindi, and Odia.
