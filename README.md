@@ -1,73 +1,67 @@
-Arogya Mitra: AI-Powered Public Health Chatbot
-Sehat Saathi (Health Companion) is an intelligent, multilingual chatbot designed to provide accessible and reliable medical information to users in rural and semi-urban areas, with a focus on optimizing for low-network conditions.
-
-The chatbot operates on WhatsApp and can understand and respond to user queries in English, Hindi, and Odia. It leverages a powerful AI model to answer questions based on the MedQA dataset while ensuring a responsive and user-friendly experience.
+Arogya Mitra: Sehat Saathi (Health Companion)
+An AI-powered public health chatbot designed to provide accessible, reliable, and multilingual medical information for rural and semi-urban communities. The chatbot runs on WhatsApp, optimized for low-network conditions, and supports English, Hindi, and Odia.
 
 ✨ Key Features
-🧠 Conversational AI: Powered by a large language model (via OpenRouter) to understand and answer a wide range of medical questions.
+🧠 Conversational AI: Powered by large language models (via OpenRouter) to answer a wide range of medical queries.
 
-🗣️ Multilingual Support: Seamlessly communicates in English, Hindi, and Odia based on the user's prompt.
+🗣️ Multilingual Support: Seamlessly interacts in English, Hindi, and Odia.
 
-🧠 Conversational Memory: Uses Redis to remember the context of the last few messages, allowing for natural, multi-turn follow-up questions.
+💬 Conversational Memory: Maintains short-term message history using Redis, enabling natural follow-up questions.
 
-⚡ Instant Feedback for Slow Networks: Immediately sends a "Got it. Thinking..." message to reassure users on slow connections, then sends the full response when ready.
+⚡ Instant Feedback: Sends a reassuring "Got it. Thinking..." message to users on slow connections before delivering the full response.
 
-📸 Image Recognition (Multimodal): Users can send images of medical concerns (e.g., skin rashes, insect bites) and receive an AI-powered analysis.
+📸 Image Recognition (Multimodal): Accepts user-uploaded images (e.g., skin rashes, bites) and provides AI-powered insights.
 
-📝 Unanswered Query Logging: Automatically logs questions the AI cannot answer to a text file for future analysis and improvement.
+📝 Unanswered Query Logging: Automatically logs unhandled queries for further analysis and improvement.
 
-🛡️ Responsible AI: Includes a mandatory disclaimer with every response to ensure users seek professional medical advice.
+🛡️ Responsible AI: Every response includes a mandatory disclaimer, encouraging users to seek professional care.
 
-🏗️ Architecture
-The application is built on a modern, decoupled backend architecture:
+🏗️ System Architecture
+Frontend (WhatsApp): User interaction via WhatsApp.
 
-Frontend (WhatsApp): Users interact with the bot through the familiar WhatsApp interface.
+Messaging Gateway (Twilio): Receives and sends WhatsApp messages.
 
-Messaging Gateway (Twilio): Twilio's API for WhatsApp receives incoming messages and sends outgoing replies.
+Backend Server (Node.js & Express): Orchestrates communication between services and manages user sessions.
 
-Backend Server (Node.js & Express): The core of the application. It handles incoming webhooks, manages conversation state, and orchestrates communication between services.
+Short-Term Memory (Redis): Caches conversation history for contextual responses.
 
-Short-Term Memory (Redis): Stores recent conversation history for each user, enabling contextual understanding.
-
-AI Brain (OpenRouter): Provides access to various large language models to generate intelligent and context-aware responses.
+AI Engine (OpenRouter): Routes prompts to large language models like LLaMA 3 and Gemini Pro Vision.
 
 🛠️ Tech Stack
 Backend: Node.js, Express.js
 
-AI: OpenRouter (for models like Llama 3, Gemini Pro Vision)
+AI Models: OpenRouter (LLaMA 3, Gemini Pro Vision, etc.)
 
 Messaging: Twilio API for WhatsApp
 
-Database: Redis (for caching and session management)
+Database/Cache: Redis
 
-Deployment: ngrok for local development tunneling
+Deployment: ngrok (for local development)
 
 🚀 Getting Started
-Follow these steps to set up and run the project locally.
-
 Prerequisites
 Node.js (v16 or later)
 
-Redis installed and running locally, or a cloud Redis instance.
+Redis (local or cloud instance)
 
-An ngrok account for local development.
+ngrok (for tunneling local server)
 
-Accounts for Twilio and OpenRouter.
+Accounts for Twilio and OpenRouter
 
 Installation
 Clone the repository:
 
-git clone <your-repository-url>
+bash
+git clone https://github.com/Soap-jpg/ALT_F4_HEALTH_CHATBOT.git
 cd health_chatbot
-
 Install dependencies:
 
+bash
 npm install
+Configure environment variables:
+Create a .env file in the root directory with the following:
 
-Set up environment variables:
-Create a file named .env in the root of the project and add the following keys.
-
-# Server Configuration
+bash
 PORT=3001
 
 # Twilio Credentials
@@ -77,35 +71,31 @@ TWILIO_AUTH_TOKEN="your_auth_token_here"
 # OpenRouter API Key
 OPENROUTER_API_KEY="sk-or-xxxxxxxxxxxxxxxxxxxxxxx"
 
-# Redis Connection URL (optional, defaults to localhost)
+# Redis (optional, defaults to localhost)
 REDIS_URL="redis://localhost:6379"
-
 Running the Application
-Start the server:
+Start the development server:
 
+bash
 npm run dev
+Expose locally with ngrok:
 
-The server will start, typically on port 3001.
-
-Expose your server with ngrok:
-In a new terminal window, run:
-
+bash
 ngrok http 3001
+Copy the generated public URL (e.g., https://xxxx.ngrok-free.app).
 
-Copy the public https://<your-id>.ngrok-free.app URL.
-
-Configure the Twilio Webhook:
+Configure Twilio Webhook:
 
 Go to your Twilio WhatsApp Sandbox settings.
 
-In the "WHEN A MESSAGE COMES IN" field, paste your ngrok URL and append the route: https://<your-id>.ngrok-free.app/api/chat/webhook.
+In WHEN A MESSAGE COMES IN, paste:
 
-Set the method to HTTP POST and save.
+text
+https://<your-ngrok-url>/api/chat/webhook
+Set method to HTTP POST and save.
 
-Start Chatting!
-Send a message from your phone to the Twilio Sandbox number on WhatsApp to start interacting with your bot.
+Start chatting:
 
-Make sure the method is HTTP POST and save.
+Send a WhatsApp message to your Twilio Sandbox number.
 
-Start Chatting!
-You're all set. Send a message to your Twilio Sandbox number on WhatsApp and start a conversation.
+The chatbot will respond in your chosen language.
