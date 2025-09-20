@@ -3,7 +3,7 @@ An AI-powered public health chatbot designed to provide accessible, reliable, an
 
 In many parts of India, getting quick and reliable health information is a real challenge. Slow internet and language barriers can make it difficult for people to get the answers they need. Sehat Saathi was built to solve this problem by running directly on WhatsApp, optimized for low-network conditions, and supporting English, Hindi, and Odia.
 
-✨ Key Features
+## ✨ Key Features
 🧠 Conversational AI: Powered by large language models to answer a wide range of medical queries with nuanced understanding.
 
 🗣️ Multilingual Support: Seamlessly interacts in English, Hindi, and Odia, automatically detecting the user's language.
@@ -18,7 +18,7 @@ In many parts of India, getting quick and reliable health information is a real 
 
 🛡️ Responsible AI: Every response includes a mandatory disclaimer, encouraging users to seek professional care.
 
-🏗️ How It's Built
+## 🏗️ How It's Built
 The application is a modern backend service that connects multiple technologies to create a seamless user experience.
 
 System Architecture
@@ -41,7 +41,7 @@ Dataset: The model was trained on the FreedomIntelligence/medical-o1-reasoning-S
 
 Prompting Strategy: The model was trained with a specific prompt template to encourage it to "think" step-by-step before providing a final answer.
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 Backend: Node.js, Express.js
 
 AI Models: OpenRouter (LLaMA 3, Gemini Pro Vision, etc.)
@@ -52,7 +52,7 @@ Database/Cache: Redis
 
 Deployment: ngrok (for local development)
 
-🚀 Getting Started
+## 🚀 Getting Started
 Prerequisites
 Node.js (v16 or later)
 
@@ -62,13 +62,13 @@ ngrok (for tunneling local server)
 
 Accounts for Twilio and OpenRouter
 
-Installation
+## Installation
 Clone the repository:
 
 git clone [https://github.com/Soap-jpg/ALT_F4_HEALTH_CHATBOT.git](https://github.com/Soap-jpg/ALT_F4_HEALTH_CHATBOT.git)
 cd health_chatbot
 
-Install dependencies:
+## Install dependencies:
 
 npm install
 
