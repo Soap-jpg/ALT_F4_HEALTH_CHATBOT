@@ -1,4 +1,4 @@
-# Arogya Mitra: Your AI Health Companion"🩺 
+# Arogya Mitra: Health Chatbot 
 An AI-powered public health chatbot designed to provide accessible, reliable, and multilingual medical information for rural and semi-urban communities.
 
 In many parts of India, getting quick and reliable health information is a real challenge. Slow internet and language barriers can make it difficult for people to get the answers they need. Sehat Saathi was built to solve this problem by running directly on WhatsApp, optimized for low-network conditions, and supporting English, Hindi, and Odia.
@@ -42,25 +42,25 @@ Dataset: The model was trained on the FreedomIntelligence/medical-o1-reasoning-S
 Prompting Strategy: The model was trained with a specific prompt template to encourage it to "think" step-by-step before providing a final answer.
 
 ## 🛠️ Tech Stack
-Backend: Node.js, Express.js
+#### Backend: Node.js, Express.js
 
-AI Models: OpenRouter (LLaMA 3, Gemini Pro Vision, etc.)
+#### AI Models: OpenRouter (LLaMA 3, Gemini Pro Vision, etc.)
 
-Messaging: Twilio API for WhatsApp
+#### Messaging: Twilio API for WhatsApp
 
-Database/Cache: Redis
+#### Database/Cache: Redis
 
-Deployment: ngrok (for local development)
+#### Deployment: ngrok (for local development)
 
 ## 🚀 Getting Started
-Prerequisites
-Node.js (v16 or later)
+### Prerequisites
+#### Node.js (v16 or later)
 
-Redis (local or cloud instance)
+#### Redis (local or cloud instance)
 
-ngrok (for tunneling local server)
+#### ngrok (for tunneling local server)
 
-Accounts for Twilio and OpenRouter
+#### Accounts for Twilio and OpenRouter
 
 ## Installation
 Clone the repository:
