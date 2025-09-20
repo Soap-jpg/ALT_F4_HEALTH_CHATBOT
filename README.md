@@ -18,10 +18,10 @@ In many parts of India, getting quick and reliable health information is a real 
 
 🛡️ Responsible AI: Every response includes a mandatory disclaimer, encouraging users to seek professional care.
 
-## 🏗️ How It's Built
-The application is a modern backend service that connects multiple technologies to create a seamless user experience.
+## How It's Built
+1) The application is a modern backend service that connects multiple technologies to create a seamless user experience.
 
-System Architecture
+2) System Architecture
 Frontend (WhatsApp): The user interacts with the bot on the most accessible platform.
 
 Messaging Gateway (Twilio): Securely handles all incoming and outgoing WhatsApp messages.
@@ -32,7 +32,7 @@ Short-Term Memory (Redis): Caches conversation history for each user, providing 
 
 AI Engine (OpenRouter): Routes prompts to a variety of powerful large language models like LLaMA 3 and Gemini Pro Vision.
 
-AI Model Fine-Tuning
+3) AI Model Fine-Tuning
 The AI's medical reasoning capability was enhanced through a fine-tuning process using the following techniques:
 
 Fine-tuning Technique: To make training feasible, we used Low-Rank Adaptation (LoRA), a parameter-efficient fine-tuning (PEFT) method. The process was significantly accelerated using the unsloth library.
