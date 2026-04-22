@@ -40,12 +40,21 @@ A conversational AI chatbot optimized for low-network conditions, running direct
 - **Dataset**: FreedomIntelligence/medical-o1-reasoning-SFT
 - **Strategy**: Chain-of-Thought prompting for step-by-step medical reasoning
 
+## Responsibilities
+
+- Designed and implemented RESTful API with Express.js
+- Integrated Twilio WhatsApp API for messaging gateway
+- Built Redis-based conversation context management
+- Connected to OpenRouter for LLM inference
+- Implemented image upload and analysis pipeline
+- Added responsible AI disclaimers for medical responses
+
 ## Tech Stack
 
 | Category | Technologies |
 |----------|--------------|
 | Backend | Node.js, Express |
-| AI | OpenRouter API (LLaMA 3, Gemini Pro Vision) |
+| AI | OpenRouter API (LLaMA 3, Gemini Pro Vision), LoRA fine-tuning |
 | Messaging | Twilio WhatsApp API |
 | Cache | Redis |
 | Dev Tools | ngrok |
@@ -53,26 +62,19 @@ A conversational AI chatbot optimized for low-network conditions, running direct
 ## Getting Started
 
 ```bash
-# Clone and install
 git clone https://github.com/Soap-jpg/ALT_F4_HEALTH_CHATBOT.git
 cd ALT_F4_HEALTH_CHATBOT
 npm install
-
-# Configure environment (.env)
-PORT=3001
-TWILIO_ACCOUNT_SID="your_sid"
-TWILIO_AUTH_TOKEN="your_token"
-OPENROUTER_API_KEY="sk-or-xxx"
-REDIS_URL="redis://localhost:6379"
-
-# Run development server
+# Configure .env with Twilio and OpenRouter keys
 npm run dev
-
-# Expose with ngrok
 ngrok http 3001
-
-# Configure Twilio webhook to: https://<your-url>/api/chat/webhook
 ```
+
+Configure Twilio webhook to: `https://<your-url>/api/chat/webhook`
+
+---
+
+*Built for HackMIT 2024*
 
 ## License
 
