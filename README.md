@@ -1,111 +1,79 @@
-# Arogya Mitra: Health Chatbot 
-An AI-powered public health chatbot designed to provide accessible, reliable, and multilingual medical information for rural and semi-urban communities.
+# Arogya Mitra: Health Chatbot
 
-In many parts of India, getting quick and reliable health information is a real challenge. Slow internet and language barriers can make it difficult for people to get the answers they need. Sehat Saathi was built to solve this problem by running directly on WhatsApp, optimized for low-network conditions, and supporting English, Hindi, and Odia.
+AI-powered WhatsApp chatbot providing multilingual medical information for rural and semi-urban communities in India.
 
-## ✨ Key Features
-🧠 Conversational AI: Powered by large language models to answer a wide range of medical queries with nuanced understanding.
+## Problem
 
-🗣️ Multilingual Support: Seamlessly interacts in English, Hindi, and Odia, automatically detecting the user's language.
+Limited access to reliable health information in rural India due to slow internet connectivity and language barriers.
 
-💬 Conversational Memory: Maintains short-term message history using Redis, enabling natural follow-up questions.
+## Solution
 
-⚡ Instant Feedback: Sends a reassuring "Got it. Thinking..." message to users on slow connections before delivering the full response.
+A conversational AI chatbot optimized for low-network conditions, running directly on WhatsApp with support for English, Hindi, and Odia.
 
-📸 Image Recognition (Multimodal): Accepts user-uploaded images (e.g., skin rashes, bites) and provides AI-powered insights using models like Gemini Pro Vision.
+## Features
 
-📝 Unanswered Query Logging: Automatically logs unhandled queries to a text file for further analysis and improvement.
+- **Conversational AI**: LLM-powered responses for nuanced medical queries
+- **Multilingual Support**: Automatic language detection and response in English, Hindi, and Odia
+- **Contextual Memory**: Redis-backed conversation history for natural follow-up questions
+- **Optimized for Low Networks**: Instant "Thinking..." acknowledgment message
+- **Multimodal Analysis**: Image-based insights (skin conditions, bites, etc.)
+- **Unanswered Query Logging**: Automatic logging for continuous improvement
+- **Responsible AI**: Mandatory medical disclaimers on all responses
 
-🛡️ Responsible AI: Every response includes a mandatory disclaimer, encouraging users to seek professional care.
+## System Architecture
 
-## How It's Built
-### 1) The application is a modern backend service that connects multiple technologies to create a seamless user experience.
+```
+[WhatsApp] → [Twilio] → [Node.js/Express Backend] → [OpenRouter (LLM)]
+                ↓                                    ↓
+           [Webhook]                              [Redis Cache]
+```
 
-### 2) System Architecture
-  Frontend (WhatsApp): The user interacts with the bot on the most accessible platform.
+- **Frontend**: WhatsApp (most accessible platform for target users)
+- **Messaging**: Twilio WhatsApp API
+- **Backend**: Node.js, Express
+- **AI Engine**: OpenRouter (LLaMA 3, Gemini Pro Vision)
+- **Cache**: Redis for conversation context
 
-  Messaging Gateway (Twilio): Securely handles all incoming and outgoing WhatsApp messages.
+## AI Model Fine-Tuning
 
-  Backend Server (Node.js & Express): The core of the application, orchestrating communication between services and managing user sessions.
+- **Method**: LoRA (Low-Rank Adaptation) via Unsloth library
+- **Dataset**: FreedomIntelligence/medical-o1-reasoning-SFT
+- **Strategy**: Chain-of-Thought prompting for step-by-step medical reasoning
 
-  Short-Term Memory (Redis): Caches conversation history for each user, providing the context for follow-up questions.
+## Tech Stack
 
-  AI Engine (OpenRouter): Routes prompts to a variety of powerful large language models like LLaMA 3 and Gemini Pro Vision.
+| Category | Technologies |
+|----------|--------------|
+| Backend | Node.js, Express |
+| AI | OpenRouter API (LLaMA 3, Gemini Pro Vision) |
+| Messaging | Twilio WhatsApp API |
+| Cache | Redis |
+| Dev Tools | ngrok |
 
-### 3) AI Model Fine-Tuning
-The AI's medical reasoning capability was enhanced through a fine-tuning process using the following techniques:
+## Getting Started
 
-Fine-tuning Technique: To make training feasible, we used Low-Rank Adaptation (LoRA), a parameter-efficient fine-tuning (PEFT) method. The process was significantly accelerated using the unsloth library.
-
-Dataset: The model was trained on the FreedomIntelligence/medical-o1-reasoning-SFT dataset, which is specifically designed for medical Chain-of-Thought (CoT) reasoning.
-
-Prompting Strategy: The model was trained with a specific prompt template to encourage it to "think" step-by-step before providing a final answer.
-
-## 🛠️ Tech Stack
-#### Backend: Node.js, Express.js
-
-#### AI Models: OpenRouter (LLaMA 3, Gemini Pro Vision, etc.)
-
-#### Messaging: Twilio API for WhatsApp
-
-#### Database/Cache: Redis
-
-#### Deployment: ngrok (for local development)
-
-## 🚀 Getting Started
-### Prerequisites
-#### Node.js (v16 or later)
-
-#### Redis (local or cloud instance)
-
-#### ngrok (for tunneling local server)
-
-#### Accounts for Twilio and OpenRouter
-
-## Installation
-Clone the repository:
-
-git clone [https://github.com/Soap-jpg/ALT_F4_HEALTH_CHATBOT.git](https://github.com/Soap-jpg/ALT_F4_HEALTH_CHATBOT.git)
-cd health_chatbot
-
-## Install dependencies:
-
+```bash
+# Clone and install
+git clone https://github.com/Soap-jpg/ALT_F4_HEALTH_CHATBOT.git
+cd ALT_F4_HEALTH_CHATBOT
 npm install
 
-Configure environment variables:
-Create a .env file in the root directory with the following:
-
+# Configure environment (.env)
 PORT=3001
-
-# Twilio Credentials
-TWILIO_ACCOUNT_SID="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-TWILIO_AUTH_TOKEN="your_auth_token_here"
-
-# OpenRouter API Key
-OPENROUTER_API_KEY="sk-or-xxxxxxxxxxxxxxxxxxxxxxx"
-
-# Redis (optional, defaults to localhost)
+TWILIO_ACCOUNT_SID="your_sid"
+TWILIO_AUTH_TOKEN="your_token"
+OPENROUTER_API_KEY="sk-or-xxx"
 REDIS_URL="redis://localhost:6379"
 
-Running the Application
-Start the development server:
-
+# Run development server
 npm run dev
 
-Expose locally with ngrok:
-In a new terminal, run:
-
+# Expose with ngrok
 ngrok http 3001
 
-Copy the generated public URL (e.g., https://xxxx.ngrok-free.app).
+# Configure Twilio webhook to: https://<your-url>/api/chat/webhook
+```
 
-Configure Twilio Webhook:
+## License
 
-Go to your Twilio WhatsApp Sandbox settings.
-
-In "WHEN A MESSAGE COMES IN", paste your ngrok URL with the webhook path: https://<your-url>/api/chat/webhook
-
-Set the method to HTTP POST and save.
-
-Start Chatting!
-Send a WhatsApp message to your Twilio Sandbox number. The chatbot will respond in your chosen language.
+MIT
