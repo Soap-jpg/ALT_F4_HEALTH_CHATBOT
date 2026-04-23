@@ -74,8 +74,6 @@ Configure Twilio webhook to: `https://<your-url>/api/chat/webhook`
 
 ---
 
-*Built for HackMIT 2024*
-
 ## License
 
 MIT
